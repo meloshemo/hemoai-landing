@@ -4,6 +4,289 @@
   <meta charset="UTF-8" />
   <title>HemoAI – Akıllı Kan Sağlığı Asistanı</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      color: #f9fafb;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(12px);
+      background: rgba(15,23,42,0.9);
+      border-bottom: 1px solid rgba(148,163,184,0.35);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .logo { display: flex; align-items: center; gap: .5rem; }
+    .logo-mark {
+      width: 32px; height: 32px; border-radius: .9rem;
+      background: radial-gradient(circle at 20% 0, #ffe1e1, #e53935);
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .logo-mark img { width: 80%; height: auto; display: block; }
+    .logo-fallback { font-weight: 800; font-size: 18px; color: #fff; }
+    .logo-text { display: flex; flex-direction: column; font-size: .8rem; }
+    .logo-text span:first-child { font-weight: 700; letter-spacing: .06em; font-size: .85rem; }
+    .logo-text span:last-child { color: #9ca3af; }
+    .nav-right { display: flex; align-items: center; gap: .75rem; font-size: .8rem; }
+    .btn {
+      border-radius: 999px; border: 1px solid rgba(148,163,184,0.6);
+      padding: .45rem .9rem; background: transparent; color: #f9fafb;
+      font-size: .8rem; cursor: pointer;
+    }
+    .btn-primary {
+      border-color: transparent;
+      background: linear-gradient(135deg, #e53935, #f97316);
+      box-shadow: 0 12px 30px rgba(248,113,113,.5);
+    }
+    .lang-switch { display:flex; align-items:center; gap:.25rem; }
+    .lang-btn {
+      border: none; background: none; color: #9ca3af;
+      font-size: .8rem; font-weight: 600; cursor: pointer;
+    }
+    .lang-active { color: #f9fafb; text-decoration: underline; }
+    main { flex: 1; padding: 3rem 0 2.5rem; }
+    .hero {
+      display: grid; gap: 2rem;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr);
+      align-items: center;
+    }
+    h1 {
+      font-size: clamp(2rem, 3.4vw, 2.7rem);
+      line-height: 1.1; margin-bottom: .8rem;
+    }
+    h1 span { color: #f97316; }
+    .sub {
+      font-size: .95rem; color: #9ca3af; max-width: 480px;
+      margin-bottom: 1.4rem;
+    }
+    .badge-row { display:flex; gap:.5rem; margin-bottom:.6rem; font-size:.8rem; color:#9ca3af; }
+    .badge {
+      padding: .1rem .6rem; border-radius: 999px;
+      border: 1px solid rgba(148,163,184,.5);
+      font-size: .7rem; text-transform: uppercase; letter-spacing: .08em;
+    }
+    .metrics { display:flex; gap:1.5rem; font-size:.8rem; color:#9ca3af; margin-bottom:1.3rem; flex-wrap:wrap; }
+    .metrics strong { display:block; font-size:1rem; color:#f9fafb; }
+    .phone {
+      border-radius: 26px; padding: 10px;
+      background: radial-gradient(circle at top, #f97316, #1f2937);
+      max-width: 280px; justify-self: center;
+    }
+    .phone-inner {
+      border-radius: 20px; padding: 1rem .8rem 1.1rem;
+      background: linear-gradient(180deg, #020617, #111827);
+      font-size: .8rem;
+    }
+    .pill {
+      display:inline-flex; align-items:center; gap:.25rem;
+      padding:.2rem .5rem; border-radius:999px;
+      background:rgba(16,185,129,.15); color:#6ee7b7;
+      font-size:.7rem;
+    }
+    .dot { width:7px; height:7px; border-radius:999px; background:#22c55e; }
+    .phone-cards { margin-top:.7rem; display:grid; gap:.5rem; }
+    .phone-card {
+      padding:.55rem .6rem; border-radius:10px;
+      background:rgba(148,163,184,.12);
+      border:1px solid rgba(148,163,184,.35);
+    }
+    .phone-card span.label { font-size:.7rem; color:#9ca3af; }
+    .phone-card span.value { font-size:1rem; font-weight:600; }
+    .footer {
+      border-top:1px solid rgba(148,163,184,.35);
+      padding:1.2rem 0 1.8rem;
+      font-size:.8rem; color:#9ca3af;
+    }
+    @media (max-width: 840px) {
+      .hero { grid-template-columns: minmax(0,1fr); }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <a href="#" class="logo">
+          <div class="logo-mark">
+            <!-- Logonun yolu: PNG/JPG hangisini kullanıyorsan ona göre değiştir -->
+            <img src="assets/hemoai-logo.png" alt="HemoAI logo"
+                 onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\"logo-fallback\">H</span>';">
+          </div>
+          <div class="logo-text">
+            <span data-i18n="brand_name">HemoAI</span>
+            <span data-i18n="brand_tagline">Akıllı Kan Sağlığı Asistanı</span>
+          </div>
+        </a>
+        <div class="nav-right">
+          <button class="btn btn-primary" type="button" data-i18n="nav_cta">
+            Yakında Google Play'de
+          </button>
+          <div class="lang-switch">
+            <button class="lang-btn lang-active" data-lang="tr">TR</button>
+            <span>/</span>
+            <button class="lang-btn" data-lang="en">EN</button>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <div>
+          <div class="badge-row">
+            <div class="badge" data-i18n="badge_new">Yeni</div>
+            <span data-i18n="badge_text">Hemogram sonuçlarınızı anlamanın en kolay yolu</span>
+          </div>
+          <h1 data-i18n="hero_title">
+            Kan tahlillerinizi <span>birkaç saniyede</span> anlayın.
+          </h1>
+          <p class="sub" data-i18n="hero_sub">
+            HemoAI, hemogram ve diğer kan tahlillerinizi yapay zekâ ile analiz eder, risk skorunuzu
+            hesaplar ve günlük adım, uyku ve su verilerinizle birleştirerek size anlaşılır sağlık özetleri sunar.
+          </p>
+          <div class="metrics">
+            <div>
+              <strong data-i18n="m1_value">250K+</strong>
+              <span data-i18n="m1_text">işlenen hemogram raporu</span>
+            </div>
+            <div>
+              <strong data-i18n="m2_value">4.9 ★</strong>
+              <span data-i18n="m2_text">kullanıcı memnuniyeti</span>
+            </div>
+          </div>
+        </div>
+        <aside class="phone">
+          <div class="phone-inner">
+            <div class="pill">
+              <span class="dot"></span>
+              <span data-i18n="pill_today">Bugün durumunuz iyi</span>
+            </div>
+            <div class="phone-cards">
+              <div class="phone-card">
+                <span class="label" data-i18n="p1_label">Günlük Adım</span><br>
+                <span class="value" data-i18n="p1_value">12.450</span>
+                <div style="font-size:.7rem;color:#a5b4fc;" data-i18n="p1_kcal">≈ 320 kcal</div>
+              </div>
+              <div class="phone-card">
+                <span class="label" data-i18n="p2_label">Sağlık Skoru</span><br>
+                <span class="value" data-i18n="p2_value">82 / 100</span>
+                <div style="font-size:.7rem;color:#6ee7b7;" data-i18n="p2_text">Orta risk • Takipteyiz</div>
+              </div>
+              <div class="phone-card">
+                <span class="label" data-i18n="p3_label">Son hemogram özeti</span><br>
+                <span style="font-size:.75rem;" data-i18n="p3_text">
+                  Demir biraz düşük, D vitamini desteği öneriliyor. Günlük su alımınızı artırın. ✨
+                </span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span data-i18n="footer_text">© 2025 HemoAI • Tüm hakları saklıdır.</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+  const translations = {
+    tr: {
+      brand_name: 'HemoAI',
+      brand_tagline: 'Akıllı Kan Sağlığı Asistanı',
+      nav_cta: "Yakında Google Play'de",
+      badge_new: 'Yeni',
+      badge_text: 'Hemogram sonuçlarınızı anlamanın en kolay yolu',
+      hero_title: 'Kan tahlillerinizi <span>birkaç saniyede</span> anlayın.',
+      hero_sub:
+        'HemoAI, hemogram ve diğer kan tahlillerinizi yapay zekâ ile analiz eder, risk skorunuzu hesaplar ve günlük adım, uyku ve su verilerinizle birleştirerek size anlaşılır sağlık özetleri sunar.',
+      m1_value: '250K+',
+      m1_text: 'işlenen hemogram raporu',
+      m2_value: '4.9 ★',
+      m2_text: 'kullanıcı memnuniyeti',
+      pill_today: 'Bugün durumunuz iyi',
+      p1_label: 'Günlük Adım',
+      p1_value: '12.450',
+      p1_kcal: '≈ 320 kcal',
+      p2_label: 'Sağlık Skoru',
+      p2_value: '82 / 100',
+      p2_text: 'Orta risk • Takipteyiz',
+      p3_label: 'Son hemogram özeti',
+      p3_text:
+        'Demir biraz düşük, D vitamini desteği öneriliyor. Günlük su alımınızı artırın. ✨',
+      footer_text: '© 2025 HemoAI • Tüm hakları saklıdır.'
+    },
+    en: {
+      brand_name: 'HemoAI',
+      brand_tagline: 'Your Smart Blood Health Companion',
+      nav_cta: 'Coming soon on Google Play',
+      badge_new: 'New',
+      badge_text: 'The easiest way to understand your hemogram results',
+      hero_title: 'Turn your blood tests into <span>clear insights</span>.',
+      hero_sub:
+        'HemoAI analyzes your labs with AI, calculates a personal risk score and combines it with your steps, sleep and water intake to create human‑friendly health summaries.',
+      m1_value: '250K+',
+      m1_text: 'hemogram reports processed',
+      m2_value: '4.9 ★',
+      m2_text: 'user rating',
+      pill_today: 'Today looks good',
+      p1_label: 'Steps today',
+      p1_value: '12,450',
+      p1_kcal: '≈ 320 kcal',
+      p2_label: 'Health Score',
+      p2_value: '82 / 100',
+      p2_text: 'Moderate risk • we keep an eye on it',
+      p3_label: 'Latest hemogram summary',
+      p3_text:
+        'Iron is slightly low, vitamin D support may help. Increasing your daily water intake is recommended. ✨',
+      footer_text: '© 2025 HemoAI • All rights reserved.'
+    }
+  };
+
+  function applyLanguage(lang) {
+    const dict = translations[lang] ?? translations.tr;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      if (!key || !(key in dict)) return;
+      // innerHTML kullanıyoruz çünkü bazı metinlerde <span> var
+      el.innerHTML = dict[key];
+    });
+
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.classList.toggle('lang-active', btn.dataset.lang === lang);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    applyLanguage('tr');
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+    });
+  });
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>HemoAI – Akıllı Kan Sağlığı Asistanı</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
     content="HemoAI, hemogram ve laboratuvar sonuçlarınızı yapay zekâ ile saniyeler içinde analiz eder. Adım sayar, uyku ve su takibiyle bütünsel sağlık takibi sunar."
