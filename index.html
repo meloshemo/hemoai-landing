@@ -24,22 +24,24 @@
       display: flex; align-items: center; justify-content: space-between;
       height: 60px;
     }
-    .logo { display: flex; align-items: center; gap: .5rem; }
-    .logo-mark {
-      width: 32px; height: 32px; border-radius: .9rem;
-      background: radial-gradient(circle at 20% 0, #ffe1e1, #e53935);
-      display: flex; align-items: center; justify-content: center; overflow: hidden;
-    }
-    .logo-mark img { width: 80%; height: auto; display: block; }
-    .logo-fallback { font-weight: 800; font-size: 18px; color: #fff; }
-    .logo-text { display: flex; flex-direction: column; font-size: .8rem; }
-    .logo-text span:first-child { font-weight: 700; letter-spacing: .06em; font-size: .85rem; }
-    .logo-text span:last-child { color: #9ca3af; }
-    .nav-right { display: flex; align-items: center; gap: .75rem; font-size: .8rem; }
-    .btn {
-      border-radius: 999px; border: 1px solid rgba(148,163,184,0.6);
-      padding: .45rem .9rem; background: transparent; color: #f9fafb;
-      font-size: .8rem; cursor: pointer;
+   .logo-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #020617;           /* koyu arka plan, renk farkı yok */
+  border: 1px solid rgba(148,163,184,.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.logo-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;            /* logoyu kırpmadan ortala */
+  display: block;
+}
     }
     .btn-primary {
       border-color: transparent;
