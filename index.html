@@ -52,6 +52,7 @@
       font-size: .8rem; font-weight: 600; cursor: pointer;
     }
     .lang-active { color: #f9fafb; text-decoration: underline; }
+
     main { flex: 1; padding: 3rem 0 2.5rem; }
     .hero {
       display: grid; gap: 2rem;
@@ -75,6 +76,7 @@
     }
     .metrics { display:flex; gap:1.5rem; font-size:.8rem; color:#9ca3af; margin-bottom:1.3rem; flex-wrap:wrap; }
     .metrics strong { display:block; font-size:1rem; color:#f9fafb; }
+
     .phone {
       border-radius: 26px; padding: 10px;
       background: radial-gradient(circle at top, #f97316, #1f2937);
@@ -100,6 +102,118 @@
     }
     .phone-card span.label { font-size:.7rem; color:#9ca3af; }
     .phone-card span.value { font-size:1rem; font-weight:600; }
+
+    /* Yeni bölümler */
+    .section {
+      padding-top: 3rem;
+    }
+    .section-header {
+      max-width: 620px;
+      margin-bottom: 1.8rem;
+    }
+    .section-title {
+      font-size: 1.4rem;
+      margin: 0 0 .4rem;
+    }
+    .section-sub {
+      font-size: .9rem;
+      color: #9ca3af;
+      margin: 0;
+    }
+    .chip-row {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.4rem;
+      margin-bottom:1rem;
+      font-size:.7rem;
+    }
+    .chip {
+      padding:.15rem .6rem;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.4);
+      color:#9ca3af;
+    }
+    .card-grid {
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      padding: 1rem;
+      border-radius: 14px;
+      background: rgba(15,23,42,.8);
+      border: 1px solid rgba(148,163,184,.3);
+      font-size: .85rem;
+    }
+    .card-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: .9rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(248,113,113,.15);
+      color:#fed7d7;
+      font-size:.85rem;
+      margin-bottom:.6rem;
+    }
+    .card-title {
+      font-weight:600;
+      margin-bottom:.25rem;
+      font-size:.9rem;
+    }
+    .card-tagline {
+      font-size:.75rem;
+      color:#a5b4fc;
+      margin-top:.35rem;
+    }
+    .two-column {
+      display:grid;
+      grid-template-columns: minmax(0,1.15fr) minmax(0,0.9fr);
+      gap:1.5rem;
+      align-items:flex-start;
+    }
+    .list {
+      padding-left:1.1rem;
+      font-size:.85rem;
+      color:#e5e7eb;
+    }
+    .list li {
+      margin-bottom:.4rem;
+    }
+    .list-strong {
+      font-weight:600;
+      color:#f97316;
+    }
+    .faq-grid {
+      display:grid;
+      grid-template-columns: minmax(0,1.2fr) minmax(0,0.8fr);
+      gap:1.5rem;
+      align-items:flex-start;
+    }
+    .faq-item {
+      padding:.75rem 0;
+      border-bottom:1px solid rgba(148,163,184,.25);
+      font-size:.85rem;
+    }
+    .faq-q {
+      font-weight:600;
+      margin-bottom:.2rem;
+    }
+    .contact-box {
+      padding:1rem;
+      border-radius:14px;
+      background:rgba(15,23,42,.85);
+      border:1px solid rgba(148,163,184,.35);
+      font-size:.85rem;
+    }
+    .contact-email {
+      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:.8rem;
+      color:#c4b5fd;
+      margin-top:.35rem;
+    }
+
     .footer {
       border-top:1px solid rgba(148,163,184,.35);
       padding:1.2rem 0 1.8rem;
@@ -107,6 +221,9 @@
     }
     @media (max-width: 840px) {
       .hero { grid-template-columns: minmax(0,1fr); }
+      .card-grid { grid-template-columns: minmax(0,1fr); }
+      .two-column, .faq-grid { grid-template-columns: minmax(0,1fr); }
+      main { padding-top: 2.2rem; }
     }
   </style>
 </head>
@@ -119,7 +236,7 @@
           <div class="logo-mark">
             <!-- Logonun yolu: PNG/JPG hangisini kullanıyorsan ona göre değiştir -->
             <img src="assets/hemoai-logo.png" alt="HemoAI logo"
-                 onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\"logo-fallback\">H</span>';">
+                 onerror="this.style.display='none';this.parentElement.innerHTML='<span class=&quot;logo-fallback&quot;>H</span>';">
           </div>
           <div class="logo-text">
             <span data-i18n="brand_name">HemoAI</span>
@@ -142,6 +259,7 @@
 
   <main>
     <div class="container">
+      <!-- HERO -->
       <section class="hero">
         <div>
           <div class="badge-row">
@@ -193,6 +311,128 @@
           </div>
         </aside>
       </section>
+
+      <!-- HEMOAI'DE NELER VAR -->
+      <section class="section" id="features">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="features_title">HemoAI'de neler var?</h2>
+          <p class="section-sub" data-i18n="features_sub">
+            Sadece hemogram değil; günlük aktivite, uyku ve su takibi ile bütünsel bir kan sağlığı asistanı.
+          </p>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-icon">🩸</div>
+            <div class="card-title" data-i18n="f1_title">Akıllı hemogram analizi</div>
+            <p data-i18n="f1_text">
+              Hemogram değerlerinizi saniyeler içinde yorumlar, referans aralıklarına göre risk seviyenizi ve kritik parametreleri öne çıkarır.
+            </p>
+            <div class="card-tagline" data-i18n="f1_tag">Hemoglobin, demir, CRP ve daha fazlası tek ekranda.</div>
+          </article>
+          <article class="card">
+            <div class="card-icon">👟</div>
+            <div class="card-title" data-i18n="f2_title">Adım, uyku ve su takibi</div>
+            <p data-i18n="f2_text">
+              Günlük adımlarınız, uyku süreniz ve su tüketiminiz otomatik toplanır; sağlık skorunuzla birlikte anlamlı grafiklere dönüştürülür.
+            </p>
+            <div class="card-tagline" data-i18n="f2_tag">Günlük özet kartları ve haftalık zorluklar.</div>
+          </article>
+          <article class="card">
+            <div class="card-icon">👨‍👩‍👧</div>
+            <div class="card-title" data-i18n="f3_title">Aile ve doktor paylaşımı</div>
+            <p data-i18n="f3_text">
+              Aile üyeleri için ayrı profiller oluşturur, sonuçları PDF olarak dışa aktarır ve güvenle paylaşmanıza izin verir.
+            </p>
+            <div class="card-tagline" data-i18n="f3_tag">Tek dokunuşla paylaşılabilir raporlar.</div>
+          </article>
+          <article class="card">
+            <div class="card-icon">🔒</div>
+            <div class="card-title" data-i18n="f4_title">Mahremiyet odaklı tasarım</div>
+            <p data-i18n="f4_text">
+              Verileriniz uçtan uca şifrelenir, üçüncü parti reklam ağlarıyla paylaşılmaz ve dilediğinizde tamamen silebilirsiniz.
+            </p>
+            <div class="card-tagline" data-i18n="f4_tag">Sağlık verisi önce güvenlik demektir.</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- NEDEN HEMOAI / GELİŞMİŞ AI -->
+      <section class="section" id="why">
+        <div class="two-column">
+          <div>
+            <div class="chip-row">
+              <span class="chip" data-i18n="why_chip1">Neden HemoAI?</span>
+              <span class="chip" data-i18n="why_chip2">Gelişmiş AI</span>
+            </div>
+            <h2 class="section-title" data-i18n="why_title">Kan tahlilleriniz, sade ve anlaşılır dilde.</h2>
+            <p class="section-sub" data-i18n="why_sub">
+              Karmaşık laboratuvar çıktılarınızı, günlük hayatta kullanabileceğiniz net önerilere dönüştürüyoruz.
+            </p>
+            <ul class="list">
+              <li><span class="list-strong" data-i18n="why_1_b">Kişisel sağlık skoru:</span> <span data-i18n="why_1">Hemogram, adım, uyku ve su verilerini tek bir puanda birleştirir.</span></li>
+              <li><span class="list-strong" data-i18n="why_2_b">Trend analizi:</span> <span data-i18n="why_2">Hemoglobin, demir, CRP ve glukoz gibi kritik değerlerdeki değişimi haftalar içinde takip eder.</span></li>
+              <li><span class="list-strong" data-i18n="why_3_b">Empatik içgörüler:</span> <span data-i18n="why_3">Soğuk grafikler yerine, insan gibi açıklanmış yorumlar ve küçük motivasyon cümleleri sunar.</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="card">
+              <div class="card-icon">🤖</div>
+              <div class="card-title" data-i18n="ai_title">Gelişmiş AI motoru</div>
+              <p data-i18n="ai_sub">
+                Klinik rehberler, literatür ve anonimleştirilmiş veri kümeleriyle eğitilmiş açıklama modelleri kullanır.
+              </p>
+              <ul class="list">
+                <li data-i18n="ai_1">Anormal parametreleri otomatik işaretler ve neden önemli olduklarını açıklar.</li>
+                <li data-i18n="ai_2">Yaşa ve cinsiyete göre özelleştirilmiş referans aralıkları kullanır.</li>
+                <li data-i18n="ai_3">Türkçe ve İngilizce olarak rapor ve PDF çıktıları üretir.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SSS / İLETİŞİM -->
+      <section class="section" id="faq">
+        <div class="faq-grid">
+          <div>
+            <h2 class="section-title" data-i18n="faq_title">Sık sorulan sorular</h2>
+            <p class="section-sub" data-i18n="faq_sub">
+              HemoAI bir doktor değildir ve tanı koymaz; amacımız sonuçlarınızı anlamanıza yardımcı olmak.
+            </p>
+            <div class="faq-item">
+              <div class="faq-q" data-i18n="q1_title">HemoAI tıbbi tanı koyar mı?</div>
+              <div data-i18n="q1_text">
+                Hayır. HemoAI, laboratuvar sonuçlarınızı açıklayan ve riskinizi anlamanıza yardımcı olan bir karar destek aracıdır.
+                Her zaman nihai kararı doktorunuz vermelidir.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" data-i18n="q2_title">Verilerim nerede saklanıyor?</div>
+              <div data-i18n="q2_text">
+                Verileriniz güvenli bulut altyapısında şifrelenmiş olarak tutulur. Hesabınızı sildiğinizde, ilişkili tüm veriler kalıcı olarak temizlenir.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" data-i18n="q3_title">Aile üyeleri için kullanabilir miyim?</div>
+              <div data-i18n="q3_text">
+                Evet. Her aile üyesi için ayrı kartlar oluşturabilir, sonuçları takip edebilir ve isterseniz doktorunuzla paylaşabilirsiniz.
+              </div>
+            </div>
+          </div>
+          <aside>
+            <div class="contact-box">
+              <h3 style="margin:0 0 .4rem;font-size:1rem;" data-i18n="contact_title">Sorun mu var, önerin mi?</h3>
+              <p style="margin:0 0 .4rem;font-size:.85rem;" data-i18n="contact_sub">
+                HemoAI'yi birlikte geliştirmek istiyoruz. Hata, öneri veya iş birliği için bize ulaşabilirsin.
+              </p>
+              <div>
+                <span data-i18n="contact_email_label">E-posta:</span>
+                <div class="contact-email" data-i18n="contact_email_value">destek@hemoai.app</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -228,7 +468,71 @@
       p3_label: 'Son hemogram özeti',
       p3_text:
         'Demir biraz düşük, D vitamini desteği öneriliyor. Günlük su alımınızı artırın. ✨',
-      footer_text: '© 2025 HemoAI • Tüm hakları saklıdır.'
+      footer_text: '© 2025 HemoAI • Tüm hakları saklıdır.',
+
+      features_title: "HemoAI'de neler var?",
+      features_sub:
+        'Sadece hemogram değil; günlük aktivite, uyku ve su takibi ile bütünsel bir kan sağlığı asistanı.',
+      f1_title: 'Akıllı hemogram analizi',
+      f1_text:
+        'Hemogram değerlerinizi saniyeler içinde yorumlar, referans aralıklarına göre risk seviyenizi ve kritik parametreleri öne çıkarır.',
+      f1_tag: 'Hemoglobin, demir, CRP ve daha fazlası tek ekranda.',
+      f2_title: 'Adım, uyku ve su takibi',
+      f2_text:
+        'Günlük adımlarınız, uyku süreniz ve su tüketiminiz otomatik toplanır; sağlık skorunuzla birlikte anlamlı grafiklere dönüştürülür.',
+      f2_tag: 'Günlük özet kartları ve haftalık zorluklar.',
+      f3_title: 'Aile ve doktor paylaşımı',
+      f3_text:
+        'Aile üyeleri için ayrı profiller oluşturur, sonuçları PDF olarak dışa aktarır ve güvenle paylaşmanıza izin verir.',
+      f3_tag: 'Tek dokunuşla paylaşılabilir raporlar.',
+      f4_title: 'Mahremiyet odaklı tasarım',
+      f4_text:
+        'Verileriniz uçtan uca şifrelenir, üçüncü parti reklam ağlarıyla paylaşılmaz ve dilediğinizde tamamen silebilirsiniz.',
+      f4_tag: 'Sağlık verisi önce güvenlik demektir.',
+
+      why_chip1: 'Neden HemoAI?',
+      why_chip2: 'Gelişmiş AI',
+      why_title: 'Kan tahlilleriniz, sade ve anlaşılır dilde.',
+      why_sub:
+        'Karmaşık laboratuvar çıktılarınızı, günlük hayatta kullanabileceğiniz net önerilere dönüştürüyoruz.',
+      why_1_b: 'Kişisel sağlık skoru:',
+      why_1:
+        'Hemogram, adım, uyku ve su verilerini tek bir puanda birleştirir.',
+      why_2_b: 'Trend analizi:',
+      why_2:
+        'Hemoglobin, demir, CRP ve glukoz gibi kritik değerlerdeki değişimi haftalar içinde takip eder.',
+      why_3_b: 'Empatik içgörüler:',
+      why_3:
+        'Soğuk grafikler yerine, insan gibi açıklanmış yorumlar ve küçük motivasyon cümleleri sunar.',
+
+      ai_title: 'Gelişmiş AI motoru',
+      ai_sub:
+        'Klinik rehberler, literatür ve anonimleştirilmiş veri kümeleriyle eğitilmiş açıklama modelleri kullanır.',
+      ai_1:
+        'Anormal parametreleri otomatik işaretler ve neden önemli olduklarını açıklar.',
+      ai_2:
+        'Yaşa ve cinsiyete göre özelleştirilmiş referans aralıkları kullanır.',
+      ai_3:
+        'Türkçe ve İngilizce olarak rapor ve PDF çıktıları üretir.',
+
+      faq_title: 'Sık sorulan sorular',
+      faq_sub:
+        'HemoAI bir doktor değildir ve tanı koymaz; amacımız sonuçlarınızı anlamanıza yardımcı olmak.',
+      q1_title: 'HemoAI tıbbi tanı koyar mı?',
+      q1_text:
+        'Hayır. HemoAI, laboratuvar sonuçlarınızı açıklayan ve riskinizi anlamanıza yardımcı olan bir karar destek aracıdır. Her zaman nihai kararı doktorunuz vermelidir.',
+      q2_title: 'Verilerim nerede saklanıyor?',
+      q2_text:
+        'Verileriniz güvenli bulut altyapısında şifrelenmiş olarak tutulur. Hesabınızı sildiğinizde, ilişkili tüm veriler kalıcı olarak temizlenir.',
+      q3_title: 'Aile üyeleri için kullanabilir miyim?',
+      q3_text:
+        'Evet. Her aile üyesi için ayrı kartlar oluşturabilir, sonuçları takip edebilir ve isterseniz doktorunuzla paylaşabilirsiniz.',
+
+      contact_title: 'Sorun mu var, önerin mi?',
+      contact_sub:
+        "HemoAI'yi birlikte geliştirmek istiyoruz. Hata, öneri veya iş birliği için bize ulaşabilirsin.",
+      contact_email_label: 'E-posta:',
+      contact_email_value: 'destek@hemoai.app'
     },
     en: {
       brand_name: 'HemoAI',
@@ -253,7 +557,71 @@
       p3_label: 'Latest hemogram summary',
       p3_text:
         'Iron is slightly low, vitamin D support may help. Increasing your daily water intake is recommended. ✨',
-      footer_text: '© 2025 HemoAI • All rights reserved.'
+      footer_text: '© 2025 HemoAI • All rights reserved.',
+
+      features_title: 'What is inside HemoAI?',
+      features_sub:
+        'Not just hemogram; a holistic companion that combines labs with daily activity, sleep and hydration.',
+      f1_title: 'Intelligent hemogram analysis',
+      f1_text:
+        'Explains your blood values in seconds, highlights critical parameters and shows your risk level at a glance.',
+      f1_tag: 'Hemoglobin, iron, CRP and more on one screen.',
+      f2_title: 'Steps, sleep and water tracking',
+      f2_text:
+        'Collects your daily steps, sleep duration and water intake and turns them into meaningful charts together with your health score.',
+      f2_tag: 'Daily summary cards and weekly challenges.',
+      f3_title: 'Family and doctor sharing',
+      f3_text:
+        'Create separate profiles for family members, export results as PDF and share them securely with your doctor.',
+      f3_tag: 'Shareable reports with one tap.',
+      f4_title: 'Privacy first design',
+      f4_text:
+        'Your data is encrypted, never sold to ad networks and can be permanently deleted whenever you want.',
+      f4_tag: 'Health data deserves extra protection.',
+
+      why_chip1: 'Why HemoAI?',
+      why_chip2: 'Advanced AI',
+      why_title: 'Your lab results, in clear human language.',
+      why_sub:
+        'We turn complex lab reports into insights and small actions you can actually use in daily life.',
+      why_1_b: 'Personal health score:',
+      why_1:
+        'Combines your labs, steps, sleep and water intake into a single easy to read number.',
+      why_2_b: 'Trend analysis:',
+      why_2:
+        'Tracks changes in key markers like hemoglobin, iron, CRP and glucose over weeks.',
+      why_3_b: 'Empathetic insights:',
+      why_3:
+        'Instead of cold charts, you get human‑like explanations and gentle motivation.',
+
+      ai_title: 'Advanced AI engine',
+      ai_sub:
+        'Uses explanation models informed by clinical guidelines, literature and anonymized data sets.',
+      ai_1:
+        'Automatically flags abnormal parameters and explains why they matter.',
+      ai_2:
+        'Adapts reference ranges based on age and sex where applicable.',
+      ai_3:
+        'Generates reports and PDFs both in Turkish and English.',
+
+      faq_title: 'Frequently asked questions',
+      faq_sub:
+        'HemoAI is not a doctor and does not make diagnoses; the goal is to help you understand your results.',
+      q1_title: 'Does HemoAI provide a medical diagnosis?',
+      q1_text:
+        'No. HemoAI is a decision support tool that explains your lab results and helps you understand your risk. Your doctor should always make the final decision.',
+      q2_title: 'Where is my data stored?',
+      q2_text:
+        'Your data is stored in secure cloud infrastructure with encryption. When you delete your account, all associated data is permanently removed.',
+      q3_title: 'Can I use it for my family members?',
+      q3_text:
+        'Yes. You can create separate cards for each family member, follow their results and share them with your doctor if you wish.',
+
+      contact_title: 'Need help or want to collaborate?',
+      contact_sub:
+        'We want to build HemoAI together with you. Reach out for bug reports, ideas or partnerships.',
+      contact_email_label: 'Email:',
+      contact_email_value: 'support@hemoai.app'
     }
   };
 
@@ -263,7 +631,6 @@
     document.querySelectorAll('[data-i18n]').forEach((el) => {
       const key = el.getAttribute('data-i18n');
       if (!key || !(key in dict)) return;
-      // innerHTML kullanıyoruz çünkü bazı metinlerde <span> var
       el.innerHTML = dict[key];
     });
 
@@ -279,53 +646,5 @@
     });
   });
 </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8" />
-  <title>HemoAI – Akıllı Kan Sağlığı Asistanı</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="HemoAI, hemogram ve laboratuvar sonuçlarınızı yapay zekâ ile saniyeler içinde analiz eder. Adım sayar, uyku ve su takibiyle bütünsel sağlık takibi sunar."
-  />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-alt: #0b1021;
-      --accent: #e53935;
-      --accent-soft: #ffebee;
-      --accent-2: #ff9800;
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --card: #111827;
-      --border: rgba(148, 163, 184, 0.35);
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.6);
-    }
-    * { box-sizing:border-box;margin:0;padding:0; }
-    body {
-      font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-      background:radial-gradient(circle at top,#1f2937 0,#020617 55%,#000 100%);
-      color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;
-    }
-    a { color:inherit;text-decoration:none; }
-    img { max-width:100%;display:block; }
-    .page{min-height:100vh;display:flex;flex-direction:column;}
-    .container{width:100%;max-width:1120px;margin:0 auto;padding:0 1.5rem;}
-    /* ... (CSS devamı ve HTML gövdesi yukarıdaki içerikte tam olarak yer alıyor) ... */
-  </style>
-</head>
-<body>
-<!-- ... (HTML gövdesi yukarıdaki içerikte tam olarak yer alıyor) ... -->
 </body>
 </html>
