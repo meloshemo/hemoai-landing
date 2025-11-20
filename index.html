@@ -103,7 +103,7 @@
     .phone-card span.label { font-size:.7rem; color:#9ca3af; }
     .phone-card span.value { font-size:1rem; font-weight:600; }
 
-    /* Yeni bölümler */
+    /* Genel bölümler */
     .section {
       padding-top: 3rem;
     }
@@ -185,6 +185,155 @@
       font-weight:600;
       color:#f97316;
     }
+
+    /* Doğruluk / Etki bölümü */
+    .accuracy-card {
+      padding: 1.3rem 1.2rem;
+      border-radius: 18px;
+      background: radial-gradient(circle at top left, rgba(248,113,113,.25), rgba(15,23,42,1));
+      border: 1px solid rgba(248,113,113,.45);
+      font-size: .8rem;
+    }
+    .accuracy-chart {
+      display:flex;
+      align-items:flex-end;
+      gap: 1rem;
+      margin-bottom: .9rem;
+    }
+    .acc-bar {
+      flex:1;
+      position:relative;
+      height: 120px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(15,23,42,1), rgba(15,23,42,.6));
+      overflow:hidden;
+    }
+    .acc-bar-fill {
+      position:absolute;
+      left:4px;
+      right:4px;
+      bottom:4px;
+      border-radius: 14px;
+    }
+    .acc-bar-1 .acc-bar-fill {
+      height: 55%;
+      background: linear-gradient(180deg, #6b7280, #020617);
+    }
+    .acc-bar-2 .acc-bar-fill {
+      height: 70%;
+      background: linear-gradient(180deg, #f97316, #111827);
+    }
+    .acc-bar-3 .acc-bar-fill {
+      height: 90%;
+      background: linear-gradient(180deg, #22c55e, #022c22);
+    }
+    .acc-bar-label {
+      position:absolute;
+      left:0; right:0;
+      bottom:4px;
+      text-align:center;
+      font-size:.65rem;
+      color:#e5e7eb;
+      padding: 0 .25rem;
+    }
+    .acc-legend {
+      display:flex;
+      justify-content:space-between;
+      gap:.8rem;
+      font-size:.7rem;
+      color:#9ca3af;
+      flex-wrap:wrap;
+    }
+    .acc-pill {
+      padding:.2rem .6rem;
+      border-radius:999px;
+      background:rgba(15,23,42,.75);
+      border:1px solid rgba(148,163,184,.4);
+      font-size:.7rem;
+    }
+    .acc-stat {
+      font-size:.8rem;
+      color:#e5e7eb;
+      margin-top:.4rem;
+    }
+    .acc-disclaimer {
+      font-size:.7rem;
+      color:#6b7280;
+      margin-top:.35rem;
+    }
+
+    /* How it works + Impact */
+    .timeline {
+      border-left: 1px solid rgba(148,163,184,.4);
+      margin-top: .8rem;
+      padding-left: 0.9rem;
+      font-size:.85rem;
+    }
+    .timeline-item {
+      position:relative;
+      margin-bottom: .9rem;
+    }
+    .timeline-dot {
+      position:absolute;
+      left:-1.15rem;
+      top:.15rem;
+      width:18px;height:18px;
+      border-radius:999px;
+      background:radial-gradient(circle at top, #f97316, #b91c1c);
+      display:flex;align-items:center;justify-content:center;
+      font-size:.7rem;
+    }
+    .timeline-title {
+      font-weight:600;
+      margin-bottom:.15rem;
+      font-size:.9rem;
+    }
+    .timeline-text {
+      color:#9ca3af;
+      font-size:.8rem;
+    }
+
+    .impact-cards {
+      display:grid;
+      gap:.7rem;
+      margin-top:.4rem;
+    }
+    .impact-card {
+      border-radius:16px;
+      padding: .9rem .9rem 1rem;
+      font-size:.8rem;
+    }
+    .impact-card-left {
+      background:linear-gradient(135deg, #020617, #111827);
+      border:1px solid rgba(55,65,81,.9);
+    }
+    .impact-card-right {
+      background:linear-gradient(135deg, #ecfeff, #e0f2fe);
+      color:#020617;
+      border:1px solid rgba(191,219,254,1);
+    }
+    .impact-label {
+      font-size:.75rem;
+      opacity:.8;
+      margin-bottom:.2rem;
+    }
+    .impact-value {
+      font-size:1.2rem;
+      font-weight:700;
+      margin-bottom:.15rem;
+    }
+    .impact-text {
+      font-size:.78rem;
+      opacity:.85;
+    }
+    .impact-list {
+      margin: .4rem 0 0;
+      padding-left: 1.1rem;
+      font-size:.8rem;
+      color:#9ca3af;
+    }
+
+    /* FAQ / İletişim */
     .faq-grid {
       display:grid;
       grid-template-columns: minmax(0,1.2fr) minmax(0,0.8fr);
@@ -208,17 +357,36 @@
       font-size:.85rem;
     }
     .contact-email {
+      display:inline-block;
       font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       font-size:.8rem;
       color:#c4b5fd;
       margin-top:.35rem;
     }
 
+    /* Footer */
     .footer {
       border-top:1px solid rgba(148,163,184,.35);
       padding:1.2rem 0 1.8rem;
       font-size:.8rem; color:#9ca3af;
     }
+    .footer-inner {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:1rem;
+      flex-wrap:wrap;
+    }
+    .footer-links a {
+      font-size:.8rem;
+      color:#9ca3af;
+      margin-left:.75rem;
+    }
+    .footer-links a:hover {
+      color:#e5e7eb;
+      text-decoration:underline;
+    }
+
     @media (max-width: 840px) {
       .hero { grid-template-columns: minmax(0,1fr); }
       .card-grid { grid-template-columns: minmax(0,1fr); }
@@ -234,7 +402,6 @@
       <nav class="nav">
         <a href="#" class="logo">
           <div class="logo-mark">
-            <!-- Logonun yolu: PNG/JPG hangisini kullanıyorsan ona göre değiştir -->
             <img src="assets/hemoai-logo.png" alt="HemoAI logo"
                  onerror="this.style.display='none';this.parentElement.innerHTML='<span class=&quot;logo-fallback&quot;>H</span>';">
           </div>
@@ -310,6 +477,71 @@
             </div>
           </div>
         </aside>
+      </section>
+
+      <!-- ACCURACY / IMPACT -->
+      <section class="section" id="accuracy">
+        <div class="two-column">
+          <div>
+            <div class="section-header">
+              <h2 class="section-title" data-i18n="acc_title">HemoAI ne kadar doğru?</h2>
+              <p class="section-sub" data-i18n="acc_sub">
+                HemoAI, doktorunuzun yerini almak için değil; randevuya daha hazırlıklı gitmeniz ve kan tahlillerinizi daha iyi
+                anlamanız için tasarlandı.
+              </p>
+            </div>
+            <div class="accuracy-card">
+              <div class="accuracy-chart">
+                <div class="acc-bar acc-bar-1">
+                  <div class="acc-bar-fill"></div>
+                  <div class="acc-bar-label" data-i18n="acc_label_manual">Kendi kendine yorumlama</div>
+                </div>
+                <div class="acc-bar acc-bar-2">
+                  <div class="acc-bar-fill"></div>
+                  <div class="acc-bar-label" data-i18n="acc_label_basic">Basit referans tabloları</div>
+                </div>
+                <div class="acc-bar acc-bar-3">
+                  <div class="acc-bar-fill"></div>
+                  <div class="acc-bar-label" data-i18n="acc_label_hemoai">HemoAI destekli özet</div>
+                </div>
+              </div>
+              <div class="acc-legend">
+                <span class="acc-pill" data-i18n="acc_stat">Örnek vakalarda uzman yorumlarıyla yüksek oranda benzer risk sınıflandırması.</span>
+              </div>
+              <div class="acc-disclaimer" data-i18n="acc_disclaimer">
+                Bu grafik açıklayıcı bir örnektir. HemoAI bir tıbbi cihaz değildir ve tanı koymaz; kesin yorum için her zaman doktorunuza başvurmalısınız.
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="section-header">
+              <h2 class="section-title" data-i18n="impact_title">Etkisini nerede hissedersiniz?</h2>
+              <p class="section-sub" data-i18n="impact_sub">
+                HemoAI, sadece tek bir sonuçtan değil; zaman içindeki değişimlerden ve günlük alışkanlıklarınızdan güç alır.
+              </p>
+            </div>
+            <div class="impact-cards">
+              <div class="impact-card impact-card-left">
+                <div class="impact-label" data-i18n="impact_before_label">Sadece rapora bakmak</div>
+                <div class="impact-value" data-i18n="impact_before_value">?</div>
+                <p class="impact-text" data-i18n="impact_before_text">
+                  Tek başına referans aralıklarını okumak çoğu kişi için zor ve yorucu; önemli detayları atlamak çok kolaydır.
+                </p>
+              </div>
+              <div class="impact-card impact-card-right">
+                <div class="impact-label" data-i18n="impact_after_label">HemoAI ile yorumlamak</div>
+                <div class="impact-value" data-i18n="impact_after_value">✅</div>
+                <p class="impact-text" data-i18n="impact_after_text">
+                  Kritik parametreler renklendirilir, sağlık skorunuz güncellenir ve günlük hedeflerle birlikte sade bir özet hâline gelir.
+                </p>
+              </div>
+            </div>
+            <ul class="impact-list">
+              <li data-i18n="impact_li1">Doktorunuzla görüşmeden önce sorularınızı hazırlamanıza yardımcı olur.</li>
+              <li data-i18n="impact_li2">Zaman içindeki ilerlemenizi görselleştirerek motivasyonunuzu artırır.</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <!-- HEMOAI'DE NELER VAR -->
@@ -391,6 +623,69 @@
         </div>
       </section>
 
+      <!-- HOW IT WORKS -->
+      <section class="section" id="how">
+        <div class="two-column">
+          <div>
+            <h2 class="section-title" data-i18n="how_title">HemoAI nasıl çalışır?</h2>
+            <p class="section-sub" data-i18n="how_sub">
+              Birkaç basit adımda hemogram sonuçlarınızı daha anlaşılır ve takip edilebilir hâle getirir.
+            </p>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-dot">1</div>
+                <div>
+                  <div class="timeline-title" data-i18n="how_step1_title">Sonuçlarınızı ekleyin</div>
+                  <div class="timeline-text" data-i18n="how_step1_text">
+                    Laboratuvar PDF’inizi içe aktarın veya tahlil değerlerinizi uygulamaya elle girin.
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot">2</div>
+                <div>
+                  <div class="timeline-title" data-i18n="how_step2_title">AI sonuçları tarar</div>
+                  <div class="timeline-text" data-i18n="how_step2_text">
+                    Model, referans aralıklarını, geçmiş tahlillerinizi ve kişisel bilgilerinizi birlikte değerlendirir.
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot">3</div>
+                <div>
+                  <div class="timeline-title" data-i18n="how_step3_title">Sağlık skoru ve özet</div>
+                  <div class="timeline-text" data-i18n="how_step3_text">
+                    Kişisel sağlık skorunuz, dikkat etmeniz gereken parametreler ve doktorunuza sorabileceğiniz sorular önerilir.
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot">4</div>
+                <div>
+                  <div class="timeline-title" data-i18n="how_step4_title">Günlük verilerle birleşir</div>
+                  <div class="timeline-text" data-i18n="how_step4_text">
+                    Adım, uyku ve su takiplerinizle birleştirerek trendler ve küçük günlük hedefler oluşturur.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="card">
+              <div class="card-title" data-i18n="how_side_title">Sürekli gelişen bir deneyim</div>
+              <p style="font-size:.8rem;color:#9ca3af;" data-i18n="how_side_text">
+                HemoAI, anonimleştirilmiş istatistiklerden ve kullanıcı geri bildirimlerinden öğrenerek, açıklamalarını ve önerilerini zamanla iyileştirmeyi hedefler.
+              </p>
+              <ul class="list">
+                <li data-i18n="how_side_1">Her yeni tahlilde sağlık skorunuz güncellenir.</li>
+                <li data-i18n="how_side_2">Uyarılar; renkler, ikonlar ve kısa cümlelerle sadeleştirilir.</li>
+                <li data-i18n="how_side_3">Amaç, doktorunuzla aranızdaki iletişimi güçlendirmektir; onu asla değiştirmek değil.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- SSS / İLETİŞİM -->
       <section class="section" id="faq">
         <div class="faq-grid">
@@ -427,7 +722,9 @@
               </p>
               <div>
                 <span data-i18n="contact_email_label">E-posta:</span>
-                <div class="contact-email" data-i18n="contact_email_value">destek@hemoai.app</div>
+                <a class="contact-email"
+                   href="mailto:support@hemoai.org"
+                   data-i18n="contact_email_value">support@hemoai.org</a>
               </div>
             </div>
           </aside>
@@ -437,8 +734,12 @@
   </main>
 
   <footer class="footer">
-    <div class="container">
+    <div class="container footer-inner">
       <span data-i18n="footer_text">© 2025 HemoAI • Tüm hakları saklıdır.</span>
+      <div class="footer-links">
+        <a href="#" data-i18n="footer_privacy">Gizlilik Politikası</a>
+        <a href="#" data-i18n="footer_terms">Kullanım Şartları</a>
+      </div>
     </div>
   </footer>
 </div>
@@ -469,6 +770,35 @@
       p3_text:
         'Demir biraz düşük, D vitamini desteği öneriliyor. Günlük su alımınızı artırın. ✨',
       footer_text: '© 2025 HemoAI • Tüm hakları saklıdır.',
+      footer_privacy: 'Gizlilik Politikası',
+      footer_terms: 'Kullanım Şartları',
+
+      acc_title: 'HemoAI ne kadar doğru?',
+      acc_sub:
+        'HemoAI, doktorunuzun yerini almak için değil; randevuya daha hazırlıklı gitmeniz ve kan tahlillerinizi daha iyi anlamanız için tasarlandı.',
+      acc_label_manual: 'Kendi kendine yorumlama',
+      acc_label_basic: 'Basit referans tabloları',
+      acc_label_hemoai: 'HemoAI destekli özet',
+      acc_stat:
+        'Örnek vakalarda uzman yorumlarıyla yüksek oranda benzer risk sınıflandırması.',
+      acc_disclaimer:
+        'Bu grafik açıklayıcı bir örnektir. HemoAI bir tıbbi cihaz değildir ve tanı koymaz; kesin yorum için her zaman doktorunuza başvurmalısınız.',
+
+      impact_title: 'Etkisini nerede hissedersiniz?',
+      impact_sub:
+        'HemoAI, sadece tek bir sonuçtan değil; zaman içindeki değişimlerden ve günlük alışkanlıklarınızdan güç alır.',
+      impact_before_label: 'Sadece rapora bakmak',
+      impact_before_value: '?',
+      impact_before_text:
+        'Tek başına referans aralıklarını okumak çoğu kişi için zor ve yorucu; önemli detayları atlamak çok kolaydır.',
+      impact_after_label: 'HemoAI ile yorumlamak',
+      impact_after_value: '✅',
+      impact_after_text:
+        'Kritik parametreler renklendirilir, sağlık skorunuz güncellenir ve günlük hedeflerle birlikte sade bir özet hâline gelir.',
+      impact_li1:
+        'Doktorunuzla görüşmeden önce sorularınızı hazırlamanıza yardımcı olur.',
+      impact_li2:
+        'Zaman içindeki ilerlemenizi görselleştirerek motivasyonunuzu artırır.',
 
       features_title: "HemoAI'de neler var?",
       features_sub:
@@ -515,6 +845,31 @@
       ai_3:
         'Türkçe ve İngilizce olarak rapor ve PDF çıktıları üretir.',
 
+      how_title: 'HemoAI nasıl çalışır?',
+      how_sub:
+        'Birkaç basit adımda hemogram sonuçlarınızı daha anlaşılır ve takip edilebilir hâle getirir.',
+      how_step1_title: 'Sonuçlarınızı ekleyin',
+      how_step1_text:
+        'Laboratuvar PDF’inizi içe aktarın veya tahlil değerlerinizi uygulamaya elle girin.',
+      how_step2_title: 'AI sonuçları tarar',
+      how_step2_text:
+        'Model, referans aralıklarını, geçmiş tahlillerinizi ve kişisel bilgilerinizi birlikte değerlendirir.',
+      how_step3_title: 'Sağlık skoru ve özet',
+      how_step3_text:
+        'Kişisel sağlık skorunuz, dikkat etmeniz gereken parametreler ve doktorunuza sorabileceğiniz sorular önerilir.',
+      how_step4_title: 'Günlük verilerle birleşir',
+      how_step4_text:
+        'Adım, uyku ve su takiplerinizle birleştirerek trendler ve küçük günlük hedefler oluşturur.',
+      how_side_title: 'Sürekli gelişen bir deneyim',
+      how_side_text:
+        'HemoAI, anonimleştirilmiş istatistiklerden ve kullanıcı geri bildirimlerinden öğrenerek, açıklamalarını ve önerilerini zamanla iyileştirmeyi hedefler.',
+      how_side_1:
+        'Her yeni tahlilde sağlık skorunuz güncellenir.',
+      how_side_2:
+        'Uyarılar; renkler, ikonlar ve kısa cümlelerle sadeleştirilir.',
+      how_side_3:
+        'Amaç, doktorunuzla aranızdaki iletişimi güçlendirmektir; onu asla değiştirmek değil.',
+
       faq_title: 'Sık sorulan sorular',
       faq_sub:
         'HemoAI bir doktor değildir ve tanı koymaz; amacımız sonuçlarınızı anlamanıza yardımcı olmak.',
@@ -532,7 +887,7 @@
       contact_sub:
         "HemoAI'yi birlikte geliştirmek istiyoruz. Hata, öneri veya iş birliği için bize ulaşabilirsin.",
       contact_email_label: 'E-posta:',
-      contact_email_value: 'destek@hemoai.app'
+      contact_email_value: 'support@hemoai.org'
     },
     en: {
       brand_name: 'HemoAI',
@@ -558,6 +913,35 @@
       p3_text:
         'Iron is slightly low, vitamin D support may help. Increasing your daily water intake is recommended. ✨',
       footer_text: '© 2025 HemoAI • All rights reserved.',
+      footer_privacy: 'Privacy Policy',
+      footer_terms: 'Terms of Use',
+
+      acc_title: 'How accurate is HemoAI?',
+      acc_sub:
+        'HemoAI is not here to replace your doctor, but to help you arrive at your appointment informed and prepared.',
+      acc_label_manual: 'On your own',
+      acc_label_basic: 'Simple reference tables',
+      acc_label_hemoai: 'Summary with HemoAI',
+      acc_stat:
+        'In example cases, our explanations often align with expert risk classifications.',
+      acc_disclaimer:
+        'This chart is illustrative only. HemoAI is not a medical device and does not provide diagnoses; always consult your physician for medical decisions.',
+
+      impact_title: 'Where does it actually help?',
+      impact_sub:
+        'HemoAI looks beyond a single result and focuses on your trends and daily habits.',
+      impact_before_label: 'Just reading the report',
+      impact_before_value: '?',
+      impact_before_text:
+        'Reading reference ranges alone is confusing and time‑consuming; it is easy to miss important details.',
+      impact_after_label: 'Reading it with HemoAI',
+      impact_after_value: '✅',
+      impact_after_text:
+        'Key parameters are highlighted, your health score is updated and merged with simple daily goals.',
+      impact_li1:
+        'Helps you prepare questions before your doctor visit.',
+      impact_li2:
+        'Visualizes your progress over time to keep you motivated.',
 
       features_title: 'What is inside HemoAI?',
       features_sub:
@@ -604,6 +988,31 @@
       ai_3:
         'Generates reports and PDFs both in Turkish and English.',
 
+      how_title: 'How does HemoAI work?',
+      how_sub:
+        'In a few simple steps, it turns your blood tests into something you can actually follow and act on.',
+      how_step1_title: 'Add your results',
+      how_step1_text:
+        'Import your lab PDF or enter your test values manually into the app.',
+      how_step2_title: 'AI scans your labs',
+      how_step2_text:
+        'The model evaluates reference ranges, your past labs and basic personal info together.',
+      how_step3_title: 'Health score and summary',
+      how_step3_text:
+        'Generates a personal health score, key parameters to watch and suggested questions for your doctor.',
+      how_step4_title: 'Merged with daily data',
+      how_step4_text:
+        'Combines with your steps, sleep and water tracking to create trends and gentle daily goals.',
+      how_side_title: 'An experience that improves over time',
+      how_side_text:
+        'HemoAI aims to learn from anonymized statistics and feedback to improve its explanations over time.',
+      how_side_1:
+        'Your health score updates with every new lab test.',
+      how_side_2:
+        'Warnings are simplified using colors, icons and short sentences.',
+      how_side_3:
+        'The goal is to strengthen your conversations with your doctor, never to replace them.',
+
       faq_title: 'Frequently asked questions',
       faq_sub:
         'HemoAI is not a doctor and does not make diagnoses; the goal is to help you understand your results.',
@@ -621,7 +1030,7 @@
       contact_sub:
         'We want to build HemoAI together with you. Reach out for bug reports, ideas or partnerships.',
       contact_email_label: 'Email:',
-      contact_email_value: 'support@hemoai.app'
+      contact_email_value: 'support@hemoai.org'
     }
   };
 
