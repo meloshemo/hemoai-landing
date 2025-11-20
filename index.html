@@ -24,24 +24,49 @@
       display: flex; align-items: center; justify-content: space-between;
       height: 60px;
     }
-   .logo-mark {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  background: #020617;           /* koyu arka plan, renk farkı yok */
-  border: 1px solid rgba(148,163,184,.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.logo-mark img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;            /* logoyu kırpmadan ortala */
-  display: block;
-}
+    .logo { display: flex; align-items: center; gap: .45rem; }
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: #020617;
+      border: 1px solid rgba(148,163,184,.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .logo-fallback { font-weight: 800; font-size: 18px; color: #fff; }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: .1rem;
+    }
+    .logo-text span:first-child {
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #f9fafb;
+    }
+    .logo-text span:last-child {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #9ca3af;
+      letter-spacing: .04em;
+    }
+    .nav-right { display: flex; align-items: center; gap: .75rem; font-size: .8rem; }
+    .btn {
+      border-radius: 999px; border: 1px solid rgba(148,163,184,0.6);
+      padding: .45rem .9rem; background: transparent; color: #f9fafb;
+      font-size: .8rem; cursor: pointer;
     }
     .btn-primary {
       border-color: transparent;
@@ -398,7 +423,7 @@
         <a href="#" class="logo">
           <div class="logo-mark">
             <img src="hemoai-logo.png" alt="HemoAI logo"
-     onerror="this.style.display='none';this.parentElement.innerHTML='<span class=&quot;logo-fallback&quot;>H</span>';">
+                 onerror="this.style.display='none';this.parentElement.innerHTML='<span class=&quot;logo-fallback&quot;>H</span>';">
           </div>
           <div class="logo-text">
             <span data-i18n="brand_name">HemoAI</span>
