@@ -115,8 +115,57 @@
       border: 1px solid rgba(148,163,184,.5);
       font-size: .7rem; text-transform: uppercase; letter-spacing: .08em;
     }
-    .metrics { display:flex; gap:1.5rem; font-size:.8rem; color:#9ca3af; margin-bottom:1.3rem; flex-wrap:wrap; }
-    .metrics strong { display:block; font-size:1rem; color:#f9fafb; }
+    .metrics { display:flex; gap:1.5rem; font-size:.8rem; color:#9ca3af; margin-bottom:1.1rem; flex-wrap:wrap; }
+    .metrics strong { display:block; font-size:1.05rem; color:#f9fafb; }
+
+    .store-row {
+      margin-bottom: 1.6rem;
+      display:flex;
+      flex-direction:column;
+      gap:.4rem;
+    }
+    .store-btn {
+      display:inline-flex;
+      align-items:center;
+      gap:.55rem;
+      padding:.55rem 1rem;
+      border-radius:999px;
+      border:1px solid rgba(248,250,252,.4);
+      background:linear-gradient(135deg,#22c55e,#16a34a);
+      color:#ecfdf5;
+      font-size:.8rem;
+      font-weight:600;
+      box-shadow:0 14px 35px rgba(22,163,74,.55);
+      cursor:pointer;
+      transition:transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+    }
+    .store-btn:hover {
+      transform:translateY(-1px);
+      box-shadow:0 18px 40px rgba(22,163,74,.65);
+    }
+    .store-icon {
+      width:24px;height:24px;
+      border-radius:8px;
+      background:rgba(15,23,42,.25);
+      display:flex;align-items:center;justify-content:center;
+      font-size:1rem;
+    }
+    .store-text {
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
+    .store-label {
+      font-size:.7rem;
+      opacity:.85;
+    }
+    .store-main {
+      font-size:.9rem;
+    }
+    .store-note {
+      font-size:.75rem;
+      color:#9ca3af;
+    }
 
     .phone {
       border-radius: 26px; padding: 10px;
@@ -424,10 +473,20 @@
     @media (max-width: 840px) {
       .top-pill { padding: 0.4rem 0.7rem; border-radius: 18px; }
       .nav { flex-direction: row; gap: 0.6rem; height: auto; }
-      .hero { grid-template-columns: minmax(0,1fr); }
+      .hero { grid-template-columns: minmax(0,1fr); gap:1.8rem; }
+      .hero > div { text-align:center; }
+      .metrics { justify-content:center; }
+      .store-row { align-items:center; }
       .card-grid { grid-template-columns: minmax(0,1fr); }
       .two-column, .faq-grid { grid-template-columns: minmax(0,1fr); }
       main { padding-top: 2.2rem; }
+      .phone { max-width: 320px; }
+    }
+
+    @media (max-width: 560px) {
+      h1 { font-size: 1.85rem; }
+      .sub { font-size: .9rem; }
+      .top-pill { display:none; }
     }
   </style>
 </head>
@@ -486,6 +545,18 @@
             <div>
               <strong data-i18n="m2_value">4.9 ★</strong>
               <span data-i18n="m2_text">kullanıcı memnuniyeti</span>
+            </div>
+          </div>
+          <div class="store-row">
+            <a href="#" class="store-btn" data-i18n-root="store_button">
+              <div class="store-icon">▶</div>
+              <div class="store-text">
+                <span class="store-label" data-i18n="store_label">Yakında Google Play'de</span>
+                <span class="store-main" data-i18n="store_main">HemoAI uygulamasını ücretsiz keşfet</span>
+              </div>
+            </a>
+            <div class="store-note" data-i18n="store_note">
+              Şu anda kapalı betadayız; yayınlandığında Google Play bağlantısı burada görünecek.
             </div>
           </div>
         </div>
@@ -786,6 +857,24 @@
                 Evet. Her aile üyesi için ayrı kartlar oluşturabilir, sonuçları takip edebilir ve isterseniz doktorunuzla paylaşabilirsiniz.
               </div>
             </div>
+            <div class="faq-item">
+              <div class="faq-q" data-i18n="q4_title">HemoAI ücretli mi olacak?</div>
+              <div data-i18n="q4_text">
+                HemoAI temel özellikleriyle herkes için erişilebilir olmayı hedefler. İleride gelişmiş analizler ve aile paylaşımı için isteğe bağlı Premium paketler eklenebilir.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" data-i18n="q5_title">Hangi testleri destekliyorsunuz?</div>
+              <div data-i18n="q5_text">
+                İlk sürümde tam kan sayımı (hemogram), demir, ferritin, CRP, D vitamini ve benzeri yaygın biyokimya testlerini destekliyoruz. Zamanla yeni parametreler eklenecek.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" data-i18n="q6_title">Telefonumun sağlık verilerine nasıl erişiyorsunuz?</div>
+              <div data-i18n="q6_text">
+                Adım, uyku ve su verileri için yalnızca gerekli izinleri istiyoruz ve bu izinleri dilediğiniz an cihaz ayarlarından kapatabiliyorsunuz. Bu veriler reklam amacıyla üçüncü kişilerle paylaşılmaz.
+              </div>
+            </div>
           </div>
           <aside>
             <div class="contact-box">
@@ -980,6 +1069,20 @@
       q3_title: 'Aile üyeleri için kullanabilir miyim?',
       q3_text:
         'Evet. Her aile üyesi için ayrı kartlar oluşturabilir, sonuçları takip edebilir ve isterseniz doktorunuzla paylaşabilirsiniz.',
+      q4_title: 'HemoAI ücretli mi olacak?',
+      q4_text:
+        'HemoAI temel özellikleriyle herkes için erişilebilir olmayı hedefler. İleride gelişmiş analizler ve aile paylaşımı için isteğe bağlı Premium paketler eklenebilir.',
+      q5_title: 'Hangi testleri destekliyorsunuz?',
+      q5_text:
+        'İlk sürümde tam kan sayımı (hemogram), demir, ferritin, CRP, D vitamini ve benzeri yaygın biyokimya testlerini destekliyoruz. Zamanla yeni parametreler eklenecek.',
+      q6_title: 'Telefonumun sağlık verilerine nasıl erişiyorsunuz?',
+      q6_text:
+        'Adım, uyku ve su verileri için yalnızca gerekli izinleri istiyoruz ve bu izinleri dilediğiniz an cihaz ayarlarından kapatabiliyorsunuz. Bu veriler reklam amacıyla üçüncü kişilerle paylaşılmaz.',
+
+      store_label: "Yakında Google Play'de",
+      store_main: 'HemoAI uygulamasını ücretsiz keşfet',
+      store_note:
+        'Şu anda kapalı betadayız; yayınlandığında Google Play bağlantısı burada görünecek.',
 
       contact_title: 'Sorun mu var, önerin mi?',
       contact_sub:
@@ -1140,6 +1243,20 @@
       q3_title: 'Can I use it for my family members?',
       q3_text:
         'Yes. You can create separate cards for each family member, follow their results and share them with your doctor if you wish.',
+      q4_title: 'Will HemoAI be paid?',
+      q4_text:
+        'The goal is to keep core features accessible to everyone. In the future there may be optional Premium plans for advanced analytics and sharing, but the basic experience will remain helpful on its own.',
+      q5_title: 'Which lab tests are supported?',
+      q5_text:
+        'The first version focuses on complete blood count (hemogram), iron, ferritin, CRP, vitamin D and other common biochemistry markers. New parameters will be added over time.',
+      q6_title: 'How do you access my health data on the phone?',
+      q6_text:
+        'For steps, sleep and water tracking we request only the permissions we truly need, and you can revoke them anytime in your device settings. These signals are never sold to ad networks.',
+
+      store_label: 'Coming soon on Google Play',
+      store_main: 'Discover the HemoAI app for free',
+      store_note:
+        'We are currently in closed beta; once live, the Google Play link will appear here.',
 
       contact_title: 'Need help or want to collaborate?',
       contact_sub:
