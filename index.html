@@ -182,16 +182,30 @@
     }
     .phone-screenshot-wrapper {
       border-radius: 18px;
-      overflow:hidden;
       border:1px solid rgba(148,163,184,.35);
       background:radial-gradient(circle at top, #1f2937, #020617);
       box-shadow:0 16px 35px rgba(15,23,42,.9);
       aspect-ratio: 9 / 19.5;
+      overflow:hidden;
     }
-    .phone-screenshot-wrapper.no-image {
-      display:none;
+    .phone-carousel {
+      width:100%;
+      height:100%;
+      border-radius:inherit;
+      overflow:hidden;
     }
-    .phone-screenshot {
+    .phone-track {
+      display:flex;
+      width:100%;
+      height:100%;
+      transition: transform .6s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    .phone-slide {
+      flex:0 0 100%;
+      width:100%;
+      height:100%;
+    }
+    .phone-slide img {
       width:100%;
       height:100%;
       object-fit:cover;
@@ -584,11 +598,25 @@
         <aside class="phone">
           <div class="phone-inner">
             <div class="phone-screenshot-wrapper">
-              <img src="app-preview.png"
-                   alt="HemoAI uygulama ekran görüntüsü"
-                   class="phone-screenshot"
-                   loading="lazy"
-                   onerror="this.style.display='none';this.parentElement.classList.add('no-image');">
+              <div class="phone-carousel" data-phone-carousel>
+                <div class="phone-track">
+                  <div class="phone-slide">
+                    <img src="app-1.png" alt="HemoAI language selection screen" loading="lazy">
+                  </div>
+                  <div class="phone-slide">
+                    <img src="app-2.png" alt="HemoAI alternative medicine recommendations" loading="lazy">
+                  </div>
+                  <div class="phone-slide">
+                    <img src="app-3.png" alt="HemoAI motivation and challenges screen" loading="lazy">
+                  </div>
+                  <div class="phone-slide">
+                    <img src="app-4.png" alt="HemoAI weekly diet recommendations" loading="lazy">
+                  </div>
+                  <div class="phone-slide">
+                    <img src="app-5.png" alt="HemoAI analysis results screen" loading="lazy">
+                  </div>
+                </div>
+              </div>
             </div>
             <div>
               <div class="pill">
@@ -1311,6 +1339,18 @@
     document.querySelectorAll('.lang-btn').forEach((btn) => {
       btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
     });
+
+    const carousel = document.querySelector('[data-phone-carousel] .phone-track');
+    if (carousel) {
+      const slides = Array.from(carousel.querySelectorAll('.phone-slide'));
+      if (slides.length > 1) {
+        let index = 0;
+        setInterval(() => {
+          index = (index + 1) % slides.length;
+          carousel.style.transform = `translateX(-${index * 100}%)`;
+        }, 4500);
+      }
+    }
   });
 </script>
 </body>
