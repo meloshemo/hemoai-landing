@@ -173,9 +173,29 @@
       max-width: 280px; justify-self: center;
     }
     .phone-inner {
-      border-radius: 20px; padding: 1rem .8rem 1.1rem;
+      border-radius: 20px; padding: .9rem .8rem 1rem;
       background: linear-gradient(180deg, #020617, #111827);
       font-size: .8rem;
+      display:flex;
+      flex-direction:column;
+      gap:.7rem;
+    }
+    .phone-screenshot-wrapper {
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(148,163,184,.35);
+      background:radial-gradient(circle at top, #1f2937, #020617);
+      box-shadow:0 16px 35px rgba(15,23,42,.9);
+      aspect-ratio: 9 / 19.5;
+    }
+    .phone-screenshot-wrapper.no-image {
+      display:none;
+    }
+    .phone-screenshot {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
     }
     .pill {
       display:inline-flex; align-items:center; gap:.25rem;
@@ -563,29 +583,38 @@
 
         <aside class="phone">
           <div class="phone-inner">
-            <div class="pill">
-              <span class="dot"></span>
-              <span data-i18n="pill_today">Bugün durumunuz iyi</span>
+            <div class="phone-screenshot-wrapper">
+              <img src="app-preview.png"
+                   alt="HemoAI uygulama ekran görüntüsü"
+                   class="phone-screenshot"
+                   loading="lazy"
+                   onerror="this.style.display='none';this.parentElement.classList.add('no-image');">
             </div>
-            <p style="margin-top:0.5rem;font-size:0.8rem;color:#9ca3af;" data-i18n="phone_sub">
-              Son hemogram + günlük adım + uyku verilerinize göre kişiselleştirilmiş sağlık özeti.
-            </p>
-            <div class="phone-cards">
-              <div class="phone-card">
-                <span class="label" data-i18n="p1_label">Günlük Adım</span><br>
-                <span class="value" data-i18n="p1_value">12.450</span>
-                <span style="font-size:0.7rem;color:#a5b4fc;" data-i18n="p1_kcal">≈ 320 kcal</span>
+            <div>
+              <div class="pill">
+                <span class="dot"></span>
+                <span data-i18n="pill_today">Bugün durumunuz iyi</span>
               </div>
-              <div class="phone-card">
-                <span class="label" data-i18n="p2_label">Sağlık Skoru</span><br>
-                <span class="value" data-i18n="p2_value">82 / 100</span>
-                <span style="font-size:0.7rem;color:#6ee7b7;" data-i18n="p2_text">Orta risk • Takipteyiz</span>
-              </div>
-              <div class="phone-card" style="grid-column:1 / -1;">
-                <span class="label" data-i18n="p3_label">Son hemogram özeti</span><br>
-                <span style="font-size:0.75rem;" data-i18n="p3_text">
-                  Demir biraz düşük, D vitamini desteği öneriliyor. Günlük su alımınızı artırın. ✨
-                </span>
+              <p style="margin-top:0.5rem;font-size:0.8rem;color:#9ca3af;" data-i18n="phone_sub">
+                Son hemogram + günlük adım + uyku verilerinize göre kişiselleştirilmiş sağlık özeti.
+              </p>
+              <div class="phone-cards">
+                <div class="phone-card">
+                  <span class="label" data-i18n="p1_label">Günlük Adım</span><br>
+                  <span class="value" data-i18n="p1_value">12.450</span>
+                  <span style="font-size:0.7rem;color:#a5b4fc;" data-i18n="p1_kcal">≈ 320 kcal</span>
+                </div>
+                <div class="phone-card">
+                  <span class="label" data-i18n="p2_label">Sağlık Skoru</span><br>
+                  <span class="value" data-i18n="p2_value">82 / 100</span>
+                  <span style="font-size:0.7rem;color:#6ee7b7;" data-i18n="p2_text">Orta risk • Takipteyiz</span>
+                </div>
+                <div class="phone-card" style="grid-column:1 / -1;">
+                  <span class="label" data-i18n="p3_label">Son hemogram özeti</span><br>
+                  <span style="font-size:0.75rem;" data-i18n="p3_text">
+                    Demir biraz düşük, D vitamini desteği öneriliyor. Günlük su alımınızı artırın. ✨
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -905,10 +934,9 @@
            data-i18n="footer_terms">Kullanım Şartları</a>
       </div>
       <div class="footer-social">
-        <a href="#" class="social-pill" aria-label="HemoAI on X">𝕏</a>
-      <a href="https://www.instagram.com/hemoai/" target="_blank" rel="noopener"
-   class="social-pill" aria-label="HemoAI on Instagram">IG</a>
-        <a href="#" class="social-pill" aria-label="HemoAI on YouTube">YT</a>
+        <a href="https://x.com/hemoai" target="_blank" rel="noopener" class="social-pill" aria-label="HemoAI on X">𝕏</a>
+        <a href="https://www.instagram.com/hemoai/" target="_blank" rel="noopener" class="social-pill" aria-label="HemoAI on Instagram">IG</a>
+        <a href="https://www.youtube.com/@hemoai" target="_blank" rel="noopener" class="social-pill" aria-label="HemoAI on YouTube">YT</a>
       </div>
     </div>
   </footer>
